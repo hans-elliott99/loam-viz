@@ -1,0 +1,10 @@
+jupyterlab
+torch
+transformers
+pytorch-lightning
+boltons
+tqdm
+seaborn
+altair
+sentence-transformers
+wandb

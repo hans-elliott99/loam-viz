@@ -1,0 +1,17 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  IMAGE_NAME: loam-viz
+  CODE_DIR: /code
+
+tasks:
+
+  build: docker build --build-arg CODE_DIR={{.CODE_DIR}} -t {{.IMAGE_NAME}} .
+
+  bash: docker run -it -v $(pwd):$CODE_DIR {{.IMAGE_NAME}} bash
+
+  jupyter: >
+    docker run -v $(pwd):$CODE_DIR -p 8888:8888 {{.CLI_ARGS}} {{.IMAGE_NAME}}
+    jupyter lab --ip 0.0.0.0 --allow-root
